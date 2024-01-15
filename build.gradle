@@ -21,11 +21,20 @@ repositories {
 
 dependencies {
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'ch.qos.logback:logback-core:1.4.12'
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 
-test {
-    useJUnitPlatform()
+task printSlf4jUrl {
+    doLast {
+        configurations.compileClasspath.each { file ->
+            if (file.name.contains("slf4j")) {
+                println "SLF4J URL: " + file.toURI().toURL().toString()
+            }
+        }
+    }
 }

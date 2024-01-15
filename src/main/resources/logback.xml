@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Console Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 로그 메시지를 출력할 형식을 정의 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 로그 레벨을 정의. root 레벨은 모든 로그에 적용됩니다 -->
+    <root level="debug">
+        <!-- 사용할 appender를 지정 -->
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- 특정 패키지 또는 클래스에 대한 로그 레벨을 별도로 지정할 수 있습니다 -->
+    <!-- 예: com.example 패키지의 로그 레벨을 INFO로 설정 -->
+    <logger name="com.example" level="info"/>
+
+</configuration>
